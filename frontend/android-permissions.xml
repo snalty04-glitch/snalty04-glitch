@@ -1,0 +1,33 @@
+<!-- 
+  Add these permissions to android/app/src/main/AndroidManifest.xml
+  (inside the <manifest> tag, before <application>)
+  
+  These are automatically added by Capacitor, but if missing, add manually:
+-->
+
+<!-- Network access for chat and API -->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+<!-- Camera for video calls -->
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-feature android:name="android.hardware.camera" android:required="false" />
+<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+<!-- Microphone for video calls -->
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+<!-- Storage for photo/video uploads -->
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+<!--
+  Also add to the <application> tag:
+  android:usesCleartextTraffic="true"
+  
+  This allows HTTP connections during development.
+  Remove for production with HTTPS.
+-->
