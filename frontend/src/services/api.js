@@ -1,4 +1,22 @@
-const API_BASE = '/api';
+// API Base URL - Change this to your server's URL for production/mobile
+const getApiBase = () => {
+  // When running as a Capacitor native app, use the full server URL
+  if (window.Capacitor?.isNativePlatform()) {
+    return 'https://YOUR-SERVER-URL.com/api'; // Replace with your deployed backend URL
+  }
+  // For web development (Vite proxy handles it)
+  return '/api';
+};
+
+const getSocketUrl = () => {
+  if (window.Capacitor?.isNativePlatform()) {
+    return 'https://YOUR-SERVER-URL.com'; // Replace with your deployed backend URL
+  }
+  return window.location.origin;
+};
+
+const API_BASE = getApiBase();
+export { getSocketUrl };
 
 const api = {
   async request(method, path, data = null) {

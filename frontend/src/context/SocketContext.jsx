@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { useAuth } from './AuthContext';
+import { getSocketUrl } from '../services/api';
 
 const SocketContext = createContext(null);
 
@@ -17,7 +18,8 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (user && token) {
-      const newSocket = io(window.location.origin, {
+      const socketUrl = getSocketUrl();
+      const newSocket = io(socketUrl, {
         auth: { token }
       });
 
